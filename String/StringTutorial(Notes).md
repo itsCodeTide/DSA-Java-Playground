@@ -582,6 +582,46 @@ public int longestCommonSubsequence(String text1, String text2) {
 // Time Complexity: O(M*N)
 // Space Complexity: O(M*N)
 ```
+In Java, both StringBuilder and StringBuffer are mutable classes used for efficient string manipulation, unlike the immutable String class. They offer methods to modify character sequences without creating new objects for each change, which is crucial for performance when dealing with frequent string alterations, such as in loops or when building large strings. 
+StringBuffer: 
+
+• Mutability: Allows modification of the character sequence in place. 
+• Thread-Safety: All its public methods are synchronized, making it thread-safe. This means multiple threads can access and modify a StringBuffer instance concurrently without data inconsistency issues. 
+• Performance: Due to synchronization overhead, StringBuffer is generally slower than StringBuilder in single-threaded environments. 
+• Use Case: Ideal for multi-threaded environments where thread-safety is a critical requirement. 
+
+StringBuilder: 
+
+• Mutability: Also allows modification of the character sequence in place. 
+• Thread-Safety: It is not thread-safe, meaning its methods are not synchronized. 
+• Performance: Being unsynchronized, StringBuilder offers better performance compared to StringBuffer in single-threaded environments. 
+• Use Case: Preferred in single-threaded environments or when thread-safety is handled externally, as it provides a performance advantage. 
+
+Key Differences Summarized: 
+
+| Feature | StringBuffer | StringBuilder  |
+| --- | --- | --- |
+| Mutability | Mutable | Mutable  |
+| Thread-Safety | Thread-safe (synchronized) | Not thread-safe (unsynchronized)  |
+| Performance | Slower (due to synchronization) | Faster (no synchronization overhead)  |
+| Use Case | Multi-threaded environments | Single-threaded environments  |
+
+Common Methods: 
+Both classes provide similar methods for string manipulation, including: 
+
+• append(): Appends a string representation of the argument to the sequence. 
+• insert(): Inserts a string representation of the argument at a specified index. 
+• delete(): Removes characters in a substring of this sequence. 
+• reverse(): Reverses the sequence of characters. 
+• capacity(): Returns the current capacity. 
+• length(): Returns the number of characters. 
+• toString(): Converts the StringBuffer or StringBuilder content to a String object. 
+
+In most modern Java applications, especially in single-threaded contexts, StringBuilder is the preferred choice due to its superior performance. StringBuffer is reserved for scenarios where explicit thread-safety for string manipulation is required. 
+
+AI responses may include mistakes.
+
+
 
 ### Time and Space Complexity of String Operations
 
