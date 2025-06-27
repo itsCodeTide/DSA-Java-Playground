@@ -12,7 +12,7 @@ class Node {
                           // It will be linked later by list operations.
     }
 }
-public class SLLBasicOperation {
+public class SinglyLinkedList {
     // The 'head' pointer: This is the reference to the first node of our linked list.
     // If 'head' is null, it means the list is empty.
     Node head;
