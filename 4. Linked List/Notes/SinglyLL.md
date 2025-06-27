@@ -57,10 +57,6 @@ HEAD
 
 -----
 
-### Types of Linked Lists: Different Chains for Different Needs
-
-Just like there are different types of chains, Linked Lists come in a few variations:
-
 #### 1\. Singly Linked List (SLL)
 
 This is the most basic type, and the one we'll focus on heavily. Each `Node` points *only* to the next `Node`. You can only traverse (move) forward.
@@ -73,60 +69,6 @@ HEAD
   V
 [ Data1 | next ] --> [ Data2 | next ] --> [ Data3 | next ] --> null
 ```
-
-#### 2\. Doubly Linked List (DLL)
-
-In a Doubly Linked List, each `Node` has two pointers:
-
-  * `next`: Points to the next `Node`.
-  * `prev` (or `previous`): Points to the previous `Node`.
-
-This allows you to traverse both forwards and backwards\! You usually keep track of both the `Head` and the `Tail` (last node).
-
-**Visual:**
-
-```
-      HEAD                          TAIL
-        |                             |
-        V                             V
-null <-- [ Data1 | prev | next ] <--> [ Data2 | prev | next ] <--> [ Data3 | prev | next ] --> null
-```
-
-**Advantages of DLLs:**
-
-  * Easier to traverse backwards.
-  * Deletion of a specific node is simpler because you can easily get to the `previous` node without starting from the `Head`.
-
-**Disadvantages of DLLs:**
-
-  * More memory used per `Node` (because of the extra `prev` pointer).
-  * Operations are slightly more complex to implement as you need to manage two pointers (`next` and `prev`) during insertions and deletions.
-
-#### 3\. Circular Linked List (CLL)
-
-In a Circular Linked List, the `next` pointer of the last `Node` points back to the *first `Node`* (the `Head`), forming a circle. There is no `null` to mark the end.
-
-**Visual (Singly Circular):**
-
-```
-HEAD
-  |  <--------------------------------
-  V                                   |
-[ Data1 | next ] --> [ Data2 | next ] --
-```
-
-**Variations:** You can have both Singly Circular Linked Lists and Doubly Circular Linked Lists.
-
-**Advantages of CLLs:**
-
-  * You can traverse the entire list starting from any `Node`.
-  * Useful for implementing data structures like queues where elements continuously cycle (e.g., a playlist that repeats).
-
-**Disadvantages of CLLs:**
-
-  * Traversal needs careful handling to avoid infinite loops (you need a condition to stop, like "stop when I get back to the starting `Node`").
-
------
 
 ### Let's Build a Singly Linked List in Java\!
 
