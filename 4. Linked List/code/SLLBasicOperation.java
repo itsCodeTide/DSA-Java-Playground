@@ -1,3 +1,17 @@
+// Node.java (This is usually an inner class, but we'll put it here for clarity)
+class Node {
+    int data;     // This is where we store the actual value (e.g., a number, a String, etc.)
+                  // We'll use 'int' for simplicity, but it could be any data type or even an object.
+    Node next;    // This is the 'pointer' or 'reference' to the next Node in the sequence.
+                  // If this is null, it means this is the last node in the list.
+
+    // Constructor for the Node class
+    public Node(int data) {
+        this.data = data; // Initialize the data part of the node
+        this.next = null; // A new node, when created, doesn't point to anything yet.
+                          // It will be linked later by list operations.
+    }
+}
 public class SLLBasicOperation {
     // The 'head' pointer: This is the reference to the first node of our linked list.
     // If 'head' is null, it means the list is empty.
