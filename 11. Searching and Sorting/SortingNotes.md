@@ -1,6 +1,6 @@
 # Sorting Algorithms in DSA (with Java)
 
-Sorting is the process of arranging elements in a particular order (typically ascending or descending). Sorting algorithms are fundamental in Data Structures and Algorithms (DSA) and are vital for optimizing data processing and searching algorithms[1][3][7]. Below are detailed notes on the most common sorting algorithms, complete with Java-style explanations and important points for understanding and implementation.
+Sorting is the process of arranging elements in a particular order (typically ascending or descending). Sorting algorithms are fundamental in Data Structures and Algorithms (DSA) and are vital for optimizing data processing and searching algorithms. Below are detailed notes on the most common sorting algorithms, complete with Java-style explanations and important points for understanding and implementation.
 
 ## 1. Bubble Sort
 
@@ -30,7 +30,7 @@ void bubbleSort(int[] arr) {
     }
 }
 ```
-Used mainly for learning or very small datasets as performance is poor on large collections[5][3].
+Used mainly for learning or very small datasets as performance is poor on large collections.
 
 ## 2. Selection Sort
 
@@ -53,7 +53,7 @@ void selectionSort(int[] arr) {
     }
 }
 ```
-Efficient for small or nearly sorted arrays; commonly used in hybrid algorithms[1][3].
+Efficient for small or nearly sorted arrays; commonly used in hybrid algorithms.
 
 ## 4. Merge Sort
 
@@ -90,7 +90,7 @@ void radixSort(int[] arr) {
         countingSortByDigit(arr, exp);
 }
 ```
-Useful for sorting large lists of numbers where the range of digit values is limited[2][3].
+Useful for sorting large lists of numbers where the range of digit values is limited.
 
 ## 8. Heap Sort
 
@@ -117,7 +117,7 @@ void heapSort(int[] arr) {
     }
 }
 ```
-Popular in scenarios where memory usage must be minimized[3][1].
+Popular in scenarios where memory usage must be minimized.
 
 ## Comparison Table
 
@@ -132,14 +132,13 @@ Popular in scenarios where memory usage must be minimized[3][1].
 | Radix Sort     | O(n+k)    | O(n+k)    | O(n+k)   | O(n+k)   | Yes    |
 | Heap Sort      | O(n log n)| O(n log n)| O(n log n)| O(1)    | No     |
 
-[Derived from public and educational sources, with code structure and logic inspired by algorithm standards. For more code, see [3][5][2][1].]
 
 **Pro Tips**:
 - Use simpler algorithms (insertion, selection, bubble) for small or nearly sorted data.
 - Use merge, quick, or heap sort for large or general datasets.
 - Counting, radix, and bucket sort are ideal for large datasets with known, constrained ranges.
 
-Sorting underpins many complex algorithms. Understanding each type’s performance and implementation—and when to use which—is essential in DSA and technical interviews[3][1].
+Sorting underpins many complex algorithms. Understanding each type’s performance and implementation—and when to use which—is essential in DSA and technical interviews.
 
 [1] https://en.wikipedia.org/wiki/Sorting_algorithm
 [2] https://www.youtube.com/watch?v=-vdAndp_NtE
