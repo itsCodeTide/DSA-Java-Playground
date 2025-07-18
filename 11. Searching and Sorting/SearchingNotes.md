@@ -1,7 +1,3 @@
-Sure! Here's a detailed and beginner-friendly explanation of **Searching in Java**, written as if a human is teaching someone through a GitHub README or repository. The tone is clear, educational, and includes examples.
-
----
-
 # 🔍 Searching in Java — A Beginner-Friendly Guide
 
 Welcome! 🙌
