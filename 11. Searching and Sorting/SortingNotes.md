@@ -1,132 +1,153 @@
+# Sorting Algorithms in DSA (with Java)
 
-## 📌 What is Sorting?
+Sorting is the process of arranging elements in a particular order (typically ascending or descending). Sorting algorithms are fundamental in Data Structures and Algorithms (DSA) and are vital for optimizing data processing and searching algorithms[1][3][7]. Below are detailed notes on the most common sorting algorithms, complete with Java-style explanations and important points for understanding and implementation.
 
-Sorting means **rearranging items in a collection** (like an array or list) into a specific order—usually ascending or descending. For example, transforming `[10, 5, 8, 2]` into `[2, 5, 8, 10]`. It’s a fundamental operation because ordered data speeds up searching, merging, and data processing .
+## 1. Bubble Sort
 
----
+**Bubble Sort** compares adjacent elements and swaps them if they are in the wrong order. It repeats this process for each element in the array, causing heavier (larger) elements to "bubble" to the end of the array with each complete pass.
 
-## 🧠 Important Concepts in Sorting
+**Time Complexity:**  
+- Best: O(n)—when the array is already sorted  
+- Worst/Average: O(n²)  
+**Space Complexity:** O(1)  
+**Stable:** Yes
 
-1. **Comparison-based vs. non-comparison-based**
+**How it works:**
+- For each pass, repeatedly compare adjacent items and swap if needed.
+- After each pass, the largest element moves to its correct position at the end.
 
-   * *Comparison-based* (e.g., Bubble, Merge, Quick): use element comparisons
-   * *Non-comparison-based* (e.g., Counting, Radix): rely on other strategies ([Medium][1])
-2. **Stable vs. Unstable**
+**Java Example:**
+```java
+void bubbleSort(int[] arr) {
+    int n = arr.length;
+    for (int i = 0; i  arr[j + 1]) {
+                // swap arr[j] and arr[j + 1]
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+```
+Used mainly for learning or very small datasets as performance is poor on large collections[5][3].
 
-   * *Stable*: equal items keep original order (Insertion, Merge)
-   * *Unstable*: equal items may move around (Selection, Quick) ([Stack Overflow][2])
-3. **In-place vs. Out-of-place**
+## 2. Selection Sort
 
-   * *In‑place* uses no extra storage (e.g., Bubble, Insertion)
-   * *Out‑of‑place* uses extra memory (e.g., Merge) ([Medium][1], [YouTube][3], [Medium][4])
-4. **Time & Space Complexity**
+**Selection Sort** selects the minimum element from the unsorted array and swaps it with the first unsorted element.
 
-   * Use Big‑O notation (best/avg/worst) to rate efficiency ([Programiz][5])
+**Time Complexity:**  
+- Best, Worst, Average: O(n²)  
+**Space Complexity:** O(1)  
+**Stable:** No
 
----
+**Java Example:**
+```java
+void selectionSort(int[] arr) {
+    int n = arr.length;
+    for (int i = 0; i = 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+```
+Efficient for small or nearly sorted arrays; commonly used in hybrid algorithms[1][3].
 
-## 🔁 Basic (Quadratic Time) Sorting Algorithms
+## 4. Merge Sort
 
-These are simple and best applied to small datasets or teaching concepts.
+**Merge Sort** is a divide-and-conquer algorithm:
+- Divides the array into halves, recursively sorts each half, then merges the sorted halves.
 
-### Bubble Sort
+**Time Complexity:**  
+- Best/Worst/Average: O(n log n)  
+**Space Complexity:** O(n) (requires auxiliary array)  
+**Stable:** Yes
 
-* Repeatedly *swap adjacent out-of-order elements*.
-* *Best-case*: O(n) if already sorted, *worst/avg*: O(n²) ([Wikipedia][6], [Stack Abuse][7]).
-* It's stable and in-place, but slow – mainly educational ([Wikipedia][8]).
+**Java Example:**
+```java
+void mergeSort(int[] arr, int left, int right) {
+    if (left  0) arr[idx++] = i;
+    }
+}
+```
+Efficient when the range k is not significantly greater than n[3][2].
 
-### Selection Sort
+## 7. Radix Sort
 
-* Repeatedly *select the smallest* from the unsorted part and swap it into place.
-* Always O(n²) time, regardless of input ([Wikipedia][6]).
-* In-place but *unstable*.
+**Radix Sort** sorts numbers by processing individual digits. It uses a stable sub-sorting algorithm (often counting sort).
 
-### Insertion Sort
+**Time Complexity:** O(d(n + k)), d = number of digits, k = digit range  
+**Space Complexity:** O(n + k)  
+**Stable:** Yes
 
-* Builds a sorted region by *inserting one item at a time* into its correct position.
-* *Best-case*: O(n) for nearly sorted input; *worst/avg*: O(n²) ([GeeksforGeeks][9], [Wikipedia][10]).
-* Stable, in-place, and great for small or partially sorted data .
+**Java Example:**
+```java
+void radixSort(int[] arr) {
+    int max = Arrays.stream(arr).max().getAsInt();
+    for (int exp = 1; max / exp > 0; exp *= 10)
+        countingSortByDigit(arr, exp);
+}
+```
+Useful for sorting large lists of numbers where the range of digit values is limited[2][3].
 
----
+## 8. Heap Sort
 
-## ⚡ Advanced “Divide & Conquer” (O(n log n)) Algorithms
+**Heap Sort** leverages a binary heap data structure:
+- Builds a max-heap, repeatedly extracts the maximum and rebuilds the heap.
 
-Efficient for large data—though often more complex to implement.
+**Time Complexity:** O(n log n)  
+**Space Complexity:** O(1)  
+**Stable:** No
 
-### Merge Sort
+**Java Example:**
+```java
+void heapSort(int[] arr) {
+    int n = arr.length;
+    // Build max heap
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+    // Extract from heap
+    for (int i = n - 1; i > 0; i--) {
+        int temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+        heapify(arr, i, 0);
+    }
+}
+```
+Popular in scenarios where memory usage must be minimized[3][1].
 
-* Splits data in half, *recursively sorts* each half, then *merges* them back.
-* Always O(n log n) time; uses extra memory for merging ([VisuAlgo][11], [Medium][4]).
-* Stable and excellent for predictable performance.
+## Comparison Table
 
-### Quick Sort
+| Algorithm      | Best      | Average   | Worst    | Space    | Stable |
+|----------------|-----------|-----------|----------|----------|--------|
+| Bubble Sort    | O(n)      | O(n²)     | O(n²)    | O(1)     | Yes    |
+| Selection Sort | O(n²)     | O(n²)     | O(n²)    | O(1)     | No     |
+| Insertion Sort | O(n)      | O(n²)     | O(n²)    | O(1)     | Yes    |
+| Merge Sort     | O(n log n)| O(n log n)| O(n log n)| O(n)    | Yes    |
+| Quick Sort     | O(n log n)| O(n log n)| O(n²)    | O(log n) | No     |
+| Counting Sort  | O(n+k)    | O(n+k)    | O(n+k)   | O(k)     | Yes    |
+| Radix Sort     | O(n+k)    | O(n+k)    | O(n+k)   | O(n+k)   | Yes    |
+| Heap Sort      | O(n log n)| O(n log n)| O(n log n)| O(1)    | No     |
 
-* Picks a *pivot*, partitions elements into “less than” / “greater than”, and recursively sorts partitions.
-* *Average time*: O(n log n), *worst-case*: O(n²) on bad pivot choices ([Medium][1], [Wikipedia][12]).
-* In-place and fast in practice, but unstable.
-* Java uses a refined “dual-pivot” Quick Sort since version 7, combined with Insertion Sort for small partitions ([arXiv][13]).
+[Derived from public and educational sources, with code structure and logic inspired by algorithm standards. For more code, see [3][5][2][1].]
 
----
+**Pro Tips**:
+- Use simpler algorithms (insertion, selection, bubble) for small or nearly sorted data.
+- Use merge, quick, or heap sort for large or general datasets.
+- Counting, radix, and bucket sort are ideal for large datasets with known, constrained ranges.
 
-## 🔹 Non-Comparison Sorting (Linear Time)
+Sorting underpins many complex algorithms. Understanding each type’s performance and implementation—and when to use which—is essential in DSA and technical interviews[3][1].
 
-These avoid comparisons and can be faster under certain conditions.
-
-### Counting Sort
-
-* Suitable for integers in a limited range (`0…k`).
-* Time complexity: O(n + k), where k is range size ([GeeksforGeeks][14]).
-* Stable and fast, but needs extra space of size k.
-
-Other examples include Radix Sort, Bucket Sort, etc. ([Programiz][5]).
-
----
-
-## 📊 Complexity Overview
-
-| Algorithm        | Best           | Avg        | Worst      | Space    | Stable? | Notes                            |
-| ---------------- | -------------- | ---------- | ---------- | -------- | ------- | -------------------------------- |
-| Bubble           | O(n)           | O(n²)      | O(n²)      | O(1)     | ✅       | Educational                      |
-| Selection        | O(n²)          | O(n²)      | O(n²)      | O(1)     | ❌       | Simple, memory-friendly          |
-| Insertion        | O(n)           | O(n²)      | O(n²)      | O(1)     | ✅       | Great for small/partially sorted |
-| Merge            | O(n log n)     | O(n log n) | O(n log n) | O(n)     | ✅       | Consistent                       |
-| Quick (dual-piv) | O(n log n) avg | O(n log n) | O(n²)      | O(log n) | ❌       | Fastest on average               |
-| Counting         | —              | O(n + k)   | O(n + k)   | O(n + k) | ✅       | Integer-specific                 |
-
----
-
-## 🧭 Choosing the Right Sort
-
-* **Tiny arrays (<20)** → Bubble, Insertion, or Selection (Insertion often best)
-* **Large, general data** → Merge Sort for stability, or Quick Sort for speed
-* **Integers with small range** → Counting Sort for linear time
-* **Partially sorted data** → Insertion Sort shines ([Wikipedia][10], [Reddit][15], [YouTube][3], [Wikipedia][16])
-
----
-
-## 🔄 Summary
-
-Sorting is arranging data in a particular order. There are various algorithms with trade-offs in:
-
-* **Time efficiency** (O(n²) vs O(n log n) vs O(n + k))
-* **Memory use** (in-place vs extra space)
-* **Stability** (whether equal values stay in order)
-
-In our next step, I can show you Java code for these algorithms—just say the word!
-
-[1]: https://medium.com/%40AlexanderObregon/introduction-to-sorting-algorithms-in-java-a-beginners-guide-db522047effb?utm_source=chatgpt.com "Java Sorting Algorithms: A Beginner's Guide | Medium"
-[2]: https://stackoverflow.com/questions/21742732/scenarios-for-selection-sort-insertion-sort-and-quick-sort?utm_source=chatgpt.com "Scenarios for selection sort, insertion sort, and quick sort"
-[3]: https://www.youtube.com/watch?v=gcRUIO-8r3U&utm_source=chatgpt.com "Bubble, Insertion, Selection, Merge, Quick, Counting Sort - YouTube"
-[4]: https://medium.com/learning-python-programming-language/sorting-algorithms-insertion-sort-selection-sort-quick-sort-merge-sort-bubble-sort-4f23bda6f37a?utm_source=chatgpt.com "Sorting Algorithms- Insertion Sort, Selection Sort, Quick Sort, Merge ..."
-[5]: https://www.programiz.com/dsa/sorting-algorithm?utm_source=chatgpt.com "Sorting Algorithm - Programiz"
-[6]: https://en.wikipedia.org/wiki/Selection_sort?utm_source=chatgpt.com "Selection sort"
-[7]: https://stackabuse.com/sorting-algorithms-in-java/?utm_source=chatgpt.com "Sorting Algorithms in Java - Stack Abuse"
-[8]: https://en.wikipedia.org/wiki/Bubble_sort?utm_source=chatgpt.com "Bubble sort"
-[9]: https://www.geeksforgeeks.org/dsa/insertion-sort-algorithm/?utm_source=chatgpt.com "Insertion Sort Algorithm - GeeksforGeeks"
-[10]: https://en.wikipedia.org/wiki/Insertion_sort?utm_source=chatgpt.com "Insertion sort"
-[11]: https://visualgo.net/en/sorting?utm_source=chatgpt.com "Sorting (Bubble, Selection, Insertion, Merge, Quick, Counting, Radix)"
-[12]: https://en.wikipedia.org/wiki/Quicksort?utm_source=chatgpt.com "Quicksort"
-[13]: https://arxiv.org/abs/1310.7409?utm_source=chatgpt.com "Average Case Analysis of Java 7's Dual Pivot Quicksort"
-[14]: https://www.geeksforgeeks.org/dsa/sorting-algorithms/?utm_source=chatgpt.com "Sorting Algorithms - GeeksforGeeks"
-[15]: https://www.reddit.com/r/learnprogramming/comments/rol90y/are_selection_and_insertion_sort_ever_used_as/?utm_source=chatgpt.com "Are selection and insertion sort ever used as anything other ... - Reddit"
-[16]: https://en.wikipedia.org/wiki/Counting_sort?utm_source=chatgpt.com "Counting sort"
+[1] https://en.wikipedia.org/wiki/Sorting_algorithm
+[2] https://www.youtube.com/watch?v=-vdAndp_NtE
+[3] https://www.programiz.com/dsa/sorting-algorithm
+[4] https://www.youtube.com/watch?v=rBDlM1QPOpE
+[5] https://www.w3schools.com/dsa/dsa_algo_bubblesort.php
+[6] https://github.com/topics/sorting-algorithm
+[7] https://www.geeksforgeeks.org/dsa/sorting-algorithms/
+[8] https://github.com/Deeksha2501/Data-Structures-and-Algorithms-Notes
+[9] https://www.tutorialspoint.com/data_structures_algorithms/sorting_algorithms.htm
+[10] https://github.com/mandartule/Apna-College-AlphaBatch-DSA-JAVA
