@@ -95,4 +95,74 @@ gcd(24, 18) => 6
 lcm(24, 18) => (24 / 6) * 18 = 72
 ```
 
+## 🧱 Core Concepts in Number Theory
+
+| Concept                     | Description                                                                 |
+|----------------------------|-----------------------------------------------------------------------------|
+| **Prime Numbers**          | Numbers greater than 1 with no divisors other than 1 and itself             |
+| **Divisibility**           | Rules to determine if one number divides another without remainder         |
+| **GCD & LCM**              | Greatest Common Divisor and Least Common Multiple                          |
+| **Modular Arithmetic**     | Arithmetic with remainders (e.g., `a mod m`) — think of clock math         |
+| **Congruences**            | Expressions like `a ≡ b (mod m)` showing equivalence under modulo          |
+| **Co-prime Numbers**       | Two numbers with GCD = 1                                                    |
+| **Euler’s Totient Function** | Counts numbers ≤ n that are co-prime to n                                 |
+| **Fermat’s Little Theorem** | If `p` is prime and `a` is not divisible by `p`, then `a^(p-1) ≡ 1 (mod p)`|
+| **Chinese Remainder Theorem** | Solves systems of modular equations with different moduli               |
+
+## 🧠 Core Areas of Advanced Number Theory
+
+### 1. **Modular Arithmetic & Congruences**
+- **Euler’s Theorem**:  
+  If `gcd(a, n) = 1`, then `a^φ(n) ≡ 1 (mod n)`
+- **Fermat’s Little Theorem**:  
+  If `p` is prime and `a` is not divisible by `p`, then `a^(p−1) ≡ 1 (mod p)`
+- **Chinese Remainder Theorem (CRT)**:  
+  Solves systems of congruences with pairwise coprime moduli.
+
+### 2. **Diophantine Equations**
+- Equations that seek integer solutions:
+  - **Linear**: `ax + by = c`
+  - **Pell’s Equation**: `x² − Ny² = 1`
+  - **Exponential**: `a^x + b^y = c^z`
+
+### 3. **Quadratic Residues & Reciprocity**
+- **Legendre Symbol**: `(a/p)` indicates whether `a` is a quadratic residue mod `p`
+- **Quadratic Reciprocity Law**:  
+  Determines the solvability of `x² ≡ a (mod p)`
+
+### 4. **Primitive Roots & Orders**
+- A number `g` is a **primitive root mod n** if its powers generate all residues mod `n`
+- **Order of an element**: Smallest `k` such that `a^k ≡ 1 (mod n)`
+
+### 5. **Möbius Function & Inversion**
+- **μ(n)**: Indicates square-free structure of `n`
+- **Möbius Inversion**: Recovers a function from its summatory form
+
+### 6. **Euler’s Totient Function (φ)**
+- Counts integers ≤ `n` that are co-prime to `n`
+- Formula:  
+  `φ(n) = n × Π(1 − 1/p)` for all prime divisors `p` of `n`
+
 ---
+
+## 📊 Advanced Applications in DSA
+
+| Concept                     | Use Case in DSA Problems                          |
+|----------------------------|---------------------------------------------------|
+| Modular Exponentiation     | Fast power calculations under modulo              |
+| Modular Inverse            | Division in modular arithmetic                    |
+| CRT                        | Solving multiple congruences                      |
+| Totient Function           | Cycle lengths in modulo operations                |
+| Quadratic Residues         | Cryptographic algorithms, primality testing       |
+| Diophantine Equations      | Integer solutions in constraints-based problems   |
+
+---
+
+## 📚 Suggested Deep-Dive Resources
+
+- [Art of Problem Solving – Advanced Number Theory](https://artofproblemsolving.com/wiki/index.php/Number_theory/Advanced)
+- [Editverse IMO-Level Number Theory](https://editverse.com/advanced-number-theory-and-arithmetic-structures/)
+- [GeeksforGeeks Advanced Number Theory Concepts](https://www.geeksforgeeks.org/engineering-mathematics/number-theory/)
+
+---
+
